@@ -3,8 +3,6 @@ import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
 import Home from './components/Home';
 import UserProfile from './components/UserProfile';
 import LogIn from './components/LogIn';
-import Debits from './components/Debits';
-import Credits from './components/Credits';
 import Summary from './components/Summary';
 
 class App extends Component {
