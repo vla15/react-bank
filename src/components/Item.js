@@ -1,7 +1,6 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+import React, { Component } from 'react'
 
-export default function Debt({id, amount, date, description}) {
+export default function Item({ id, amount, date, description }) {
   return (
     <div>
       <div>{id}</div>
@@ -9,5 +8,5 @@ export default function Debt({id, amount, date, description}) {
       <div>{amount}</div>
       <div>{date}</div>
     </div>
-  );
+  )
 }

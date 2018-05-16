@@ -1,11 +1,11 @@
-import React from 'react';
-import Credit from './Credit';
+import React, { Component } from 'react'
+import Item from './Item';
 
-export default class Credits extends React.Component {
-
+export default class Summary extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      type: this.props.type,
       input: {
         id: '',
         description: '',
@@ -16,7 +16,7 @@ export default class Credits extends React.Component {
   }
 
   handleOnChange = (e) => {
-    const id = this.props.credits.length;
+    const id = this.props.items.length;
     const updateInput = { ...this.state.input }
     const inputField = e.target.name;
     const inputValue = e.target.value;
@@ -28,15 +28,17 @@ export default class Credits extends React.Component {
 
   render() {
     const userInput = { ...this.state.input };
-    const credits = this.props.credits.map((credit, i) => <Credit key={i} {...credit}/>)
+    const type = this.state.type;
+    console.log('the type', type);
+    const credits = this.props.items.map((item, i) => <Item key={i} id={item.id} description={item.description} amount={item.amount} date={item.date} />)
     return (
       <div>
-        <h1>Credits</h1>
+        <h1>{this.state.type.toUpperCase()}</h1>
         <h2>Account Balance: {this.props.accountBalance}</h2>
         {credits}
         <input type="text" name="description" onChange={this.handleOnChange} value={this.state.description}></input>
         <input type="text" name="amount" onChange={this.handleOnChange} value={this.state.amount}></input>
-        <button onClick={() => { this.props.addCredit(userInput, "credits") }}>Add Credit</button>
+        <button onClick={() => { this.props.addCreditOrDebit(userInput, type) }}>Add {this.state.type}</button>
       </div>
     );
   }

@@ -5,6 +5,7 @@ import UserProfile from './components/UserProfile';
 import LogIn from './components/LogIn';
 import Debits from './components/Debits';
 import Credits from './components/Credits';
+import Summary from './components/Summary';
 
 class App extends Component {
 
@@ -53,8 +54,8 @@ class App extends Component {
     );
 
     const LogInComponent = () => (<LogIn user={this.state.currentUser} mockLogIn={this.mockLogIn} {...this.props} />)
-    const DebitsComponent = () => (<Debits addDebit={this.addNewCreditOrDebit} debits={this.state.debits} accountBalance={accountBalance}/>)
-    const CreditsComponent = () => (<Credits addCredit={this.addNewCreditOrDebit} credits={this.state.credits} accountBalance={accountBalance}/>)
+    const DebitsComponent = () => (<Summary type={'debits'} addCreditOrDebit={this.addNewCreditOrDebit} items={this.state.debits} accountBalance={accountBalance}/>)
+    const CreditsComponent = () => (<Summary type={'credits'} addCreditOrDebit={this.addNewCreditOrDebit} items={this.state.credits} accountBalance={accountBalance}/>)
 
     return (
       <Router>
